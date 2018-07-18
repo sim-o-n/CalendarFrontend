@@ -1,0 +1,28 @@
+
+.page-wrapper {
+  max-width: 1300px;
+  width: 90%;
+  margin: auto;
+  min-height: 100vh;
+  background: #f1f1f1;
+  padding: 20px 0;
+}
+
+
+button {
+  font-size: 1em;
+}
+
+
+.headline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.auth-header {
+  display: flex;
+  align-items: right;
+}

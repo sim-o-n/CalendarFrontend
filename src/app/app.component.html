@@ -1,0 +1,76 @@
+<div class="page-wrapper">
+
+  <div class="auth-header">
+    <button mat-button (click)="login()" *ngIf="!(authService.jwt$ | async)"> login</button>
+    <button mat-button (click)="openRegister()" *ngIf="!(authService.jwt$ | async)"> register</button>
+
+    <button mat-button (click)="logout()" *ngIf="!!(authService.jwt$ | async)"> logout</button>
+    <button mat-button (click)="loadEvents()" *ngIf="!!(authService.jwt$ | async)"> reload</button>
+  </div>
+
+  <div class="headline">
+    <div class="date-navigate-wrapper">
+      <button mat-button
+              (click)="previewViewElement(viewDate)"
+              matTooltip="navigate one left">previous
+      </button>
+      <button (click)="viewDate = today"
+              mat-button
+              matTooltip="navigate to today">today
+      </button>
+      <button (click)="nextViewElement(viewDate)"
+              mat-button
+              matTooltip="navigate one right">next
+      </button>
+    </div>
+
+    <div class="today">
+      <h3>{{ viewDate | date:'longDate' }}</h3>
+    </div>
+
+    <div class="view-change-header">
+      <button (click)="view='month'" mat-button>Month</button>
+      <button (click)="view='week'" mat-button>Week</button>
+      <button (click)="view='day'" mat-button>Day</button>
+
+      <button (click)="openAddEventForm()"
+              mat-button
+              matTooltip="add another event">
+        <i class="fas fa-plus-square"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="'month'"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEventClicked($event.event)">
+    </mwl-calendar-month-view>
+
+    <mwl-calendar-week-view
+      *ngSwitchCase="'week'"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEventClicked($event.event)">
+    </mwl-calendar-week-view>
+
+    <mwl-calendar-day-view
+      *ngSwitchCase="'day'"
+      [viewDate]="viewDate"
+      [refresh]="refresh"
+      (eventClicked)="handleEventClicked($event.event)">
+    </mwl-calendar-day-view>
+
+  </div>
+
+  <app-add-event-form *ngIf="showAddEventForm" (closed)="showAddEventForm = false"></app-add-event-form>
+  <app-login-form *ngIf="showLoginForm && !(authService.jwt$ | async)" (closed)="showLoginForm = false; loadEvents()"></app-login-form>
+  <app-show-event *ngIf="!!focuedEvend" [event]="focuedEvend" (closed)="focuedEvend = null"></app-show-event>
+  <app-register *ngIf="showRegisterPopUp" (closed)="showRegisterPopUp = null"></app-register>
+</div>

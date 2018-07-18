@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+// elements
+
+button {
+  background: #339af0;
+  color: white;
+  box-shadow: none;
+  border: none;
+  border-radius: 2px;
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 5px 15px;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &:focus {
+    transform: translateY(+2px);
+    outline: none;
+  }
+}

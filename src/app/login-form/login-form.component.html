@@ -1,0 +1,27 @@
+<div class="overlay-background">
+
+  <div class="card">
+
+    <mat-icon (click)="closed.emit()"><i class="fas fa-window-close"></i></mat-icon>
+
+    <h1>
+      Login
+    </h1>
+
+    <mat-form-field class="">
+      <input matInput placeholder="email" [(ngModel)]="email">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="">
+      <input matInput placeholder="password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <br>
+
+    <button (click)="login()" mat-button>login
+    </button>
+  </div>
+
+</div>

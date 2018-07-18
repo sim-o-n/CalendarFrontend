@@ -1,0 +1,35 @@
+<div class="overlay-background">
+
+  <div class="card" *ngIf="!(authService.jwt$ | async)">
+    <mat-icon (click)="closed.emit()"><i class="fas fa-window-close"></i></mat-icon>
+
+    <h2>Register</h2>
+
+    <mat-form-field class="">
+      <input matInput placeholder="name" [(ngModel)]="name">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="">
+      <input matInput placeholder="email" [(ngModel)]="email">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="">
+      <input matInput placeholder="password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="">
+      <input matInput placeholder="email" [(ngModel)]="region">
+    </mat-form-field>
+
+    <br>
+
+
+    <br>
+    <button mat-button (click)="register()">
+      register
+    </button>
+  </div>
+</div>

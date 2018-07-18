@@ -1,0 +1,20 @@
+<div class="overlay-background">
+
+  <div class="card">
+    <mat-icon (click)="closed.emit()"><i class="fas fa-window-close"></i></mat-icon>
+
+    <h2>Title: {{ event.title }}</h2>
+
+    <br>
+    <span>Start time: {{ event.startTime | date:'long' }}</span> <br>
+    <span>End time: {{ event.endTime | date:'long'  }}</span> <br>
+
+    <span>Region: {{ event.region }}</span> <br>
+
+
+    <mat-divider></mat-divider>
+
+    <ng-content></ng-content>
+  </div>
+
+</div>
